@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, TextField, Typography, Box, Alert } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
+import { Button, TextField, Typography, Box, Alert, Divider } from "@mui/material";
+
 
 import { useNavigate } from "react-router-dom";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000"; // IMPORTANT
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const submit = async (e) => {
     e.preventDefault();
 
@@ -65,7 +65,11 @@ const navigate = useNavigate();
         fullWidth
         required
       />
-
+        <Box sx={{ display: 'flex', flexDirection: "row", alignItems: "center" ,justifyContent:"flex-end"}}>
+        <Typography fontSize={12}>If you dont have any Account</Typography>
+        <Button onClick={()=>{navigate("/")}}> Register</Button>
+      </Box>
+      <Divider sx={{ width: "100%" }} />
       <Button type="submit" variant="contained" color="primary" fullWidth>
         Login
       </Button>
